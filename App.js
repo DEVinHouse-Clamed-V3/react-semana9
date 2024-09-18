@@ -8,37 +8,31 @@ import AsyncStorage from '@react-native-async-storage/async-storage';
 export default function App() {
 
 
-  const [nome, setNome] = useState("")
-  const [email, setEmail] = useState("")
-  const [isEnabled, setIsEnabled] = useState(false)
-  const [isDark, setIsDark] = useState(false)
+  const [tasks, setTasks] = useState([
+    {
+      id: 1,
+      nome: "Estudar",
+      descricao: "Estudar para DevInHouse",
+      status: "false",
+      data: "18 set 2024"
+    },
+    {
+      id: 2,
+      nome: "Pagar boleto",
+      descricao: "Pagar boleto do condominio de minas",
+      status: "false",
+      data: "17 set 2024"
+    },
+    {
+      id: 3,
+      nome: "Estudar 2",
+      descricao: "Estudar para Faculdade",
+      status: "false",
+      data: "18 set 2024"
+    },
+  ])
 
-  function handleSubmit() {
-    if (typeof nome !== 'string' || typeof email !== 'string') {
-      return;
-    }
-
-    console.log('Nome: ', nome, 'E-mail: ', email, 'Aceita os termos de uso: ', isEnabled)
-  }
-
-  async function setItem() {
-    try {
-      await AsyncStorage.setItem('theme', isDark)
-      console.log('Dado foi salvo')
-    } catch (error) {
-      console.error(error)
-    }
-  }
-
-  async function getItem() {
-    try {
-      const response = await AsyncStorage.getItem('theme')
-      console.log('Dado foi recuperado')
-      console.log(response)
-    } catch (error) {
-      console.error(error)
-    }
-  }
+  const [search, setSearch] = useState("")
 
   useEffect(() => {
     console.log('tela sendo atualizada')
@@ -49,20 +43,23 @@ export default function App() {
   }, [])
 
   useEffect(() => {
-    console.log('usuario alterando o tema da aplicacao')
-    setItem()
-
-  }, [isDark])
+    // toLocaleLowerCase
+    console.log('usuario digitando no input de busca')
+    const filtrado = tasks.filter(item => item.nome.toLocaleLowerCase().includes(search.toLocaleLowerCase()))
+    setTasks(filtrado)
+  }, [search])
 
   return (
-    <View style={isDark ? styles.container : styles.containerDark}>
-      <TextInput placeholder='Nome' value={nome} onChangeText={setNome} />
-      <TextInput placeholder='E-mail' keyboardType='email-address' value={email} onChangeText={setEmail} />
+    <View style={styles.container}>
+      <TextInput placeholder='Buscar tarefa' onChangeText={setSearch} value={search} />
 
-      <Switch value={isDark} onValueChange={setIsDark} />
-
-      <Button title='Enviar' onPress={handleSubmit} />
-
+      {tasks.map(task => {
+        return <Task key={task.id}
+          nome={task.nome}
+          descricao={task.descricao}
+          status={task.status}
+          data={task.data} />
+      })}
     </View>
   );
 }
@@ -73,12 +70,5 @@ const styles = StyleSheet.create({
     backgroundColor: '#fff',
     alignItems: 'center',
     justifyContent: 'center',
-  },
-  containerDark: {
-    flex: 1,
-    color: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-    backgroundColor: '#000'
   }
 });
