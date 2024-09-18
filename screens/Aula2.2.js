@@ -4,7 +4,7 @@ import { Button, StyleSheet, Text, TextInput, View, Switch } from 'react-native'
 import { Picker } from '@react-native-picker/picker';
 import Task from './components/Task/Task';
 
-export default function App() {
+export default function Aula2() {
 
   const [nome, setNome] = useState("")
   const [email, setEmail] = useState("")
