@@ -1,9 +1,9 @@
-import { Button, Text, TextInput, View, Switch } from 'react-native';
+import { StyleSheet, Text, View } from 'react-native';
 
 // props
 function Task({ nome, descricao, status, data }) {
     return (
-        <View>   
+        <View style={styles.card}>   
             <Text>Nome: {nome}</Text>    
             <Text>Descricao: {descricao}</Text>   
             <Text>Status: {status}</Text>     
@@ -15,3 +15,14 @@ function Task({ nome, descricao, status, data }) {
 }
 
 export default Task;
+
+const styles = StyleSheet.create({
+    card: {
+        display: 'flex',
+        flexDirection: 'column',
+        backgroundColor: 'gray',
+        height: 'auto',
+        padding: '14px',
+        borderRadius: '4px'        
+    }
+})

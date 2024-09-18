@@ -7,8 +7,8 @@ import AsyncStorage from '@react-native-async-storage/async-storage';
 
 export default function App() {
 
-
-  const [tasks, setTasks] = useState([
+  const [tasks, setTasks] = useState([])
+  const [original, setOriginal] = useState([
     {
       id: 1,
       nome: "Estudar",
@@ -45,21 +45,23 @@ export default function App() {
   useEffect(() => {
     // toLocaleLowerCase
     console.log('usuario digitando no input de busca')
-    const filtrado = tasks.filter(item => item.nome.toLocaleLowerCase().includes(search.toLocaleLowerCase()))
+    const filtrado = original.filter(item => item.nome.toLocaleLowerCase().includes(search.toLocaleLowerCase()))
     setTasks(filtrado)
   }, [search])
 
   return (
     <View style={styles.container}>
-      <TextInput placeholder='Buscar tarefa' onChangeText={setSearch} value={search} />
-
-      {tasks.map(task => {
-        return <Task key={task.id}
-          nome={task.nome}
-          descricao={task.descricao}
-          status={task.status}
-          data={task.data} />
-      })}
+      <TextInput style={styles.searchInput} placeholder='Buscar tarefa' onChangeText={setSearch} value={search} />
+      
+      <View style={styles.list}>
+        {tasks.map(task => {
+          return <Task key={task.id}
+            nome={task.nome}
+            descricao={task.descricao}
+            status={task.status}
+            data={task.data} />
+        })}
+      </View>
     </View>
   );
 }
@@ -70,5 +72,17 @@ const styles = StyleSheet.create({
     backgroundColor: '#fff',
     alignItems: 'center',
     justifyContent: 'center',
+  },
+  list: {
+    display: 'flex',
+    flexDirection: 'column',
+    gap: '10px',
+    marginTop: '10px'
+  },
+  searchInput: {
+    width: '200px',
+    height: '32px',
+    borderWidth: 1,
+    borderColor: 'gray'
   }
 });
