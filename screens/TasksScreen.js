@@ -32,7 +32,6 @@ export default function TasksScreen() {
   const [search, setSearch] = useState("")
 
   useEffect(() => {
-    // toLocaleLowerCase
     console.log('usuario digitando no input de busca')
     const filtrado = original.filter(item => item.nome.toLocaleLowerCase().includes(search.toLocaleLowerCase()))
     setTasks(filtrado)
