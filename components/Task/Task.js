@@ -22,7 +22,7 @@ const styles = StyleSheet.create({
         flexDirection: 'column',
         backgroundColor: 'gray',
         height: 'auto',
-        padding: '14px',
-        borderRadius: '4px'        
+        padding: 14,
+        borderRadius: 4        
     }
 })

@@ -65,12 +65,12 @@ const styles = StyleSheet.create({
   list: {
     display: 'flex',
     flexDirection: 'column',
-    gap: '10px',
-    marginTop: '10px'
+    gap: 10,
+    marginTop: 10
   },
   searchInput: {
-    width: '200px',
-    height: '32px',
+    width: 200,
+    height: 32,
     borderWidth: 1,
     borderColor: 'gray'
   }
