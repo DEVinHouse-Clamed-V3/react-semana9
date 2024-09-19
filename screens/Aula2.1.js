@@ -1,6 +1,5 @@
-import { StatusBar } from 'expo-status-bar';
 import { useEffect, useState } from 'react';
-import { Button, StyleSheet, Text, TextInput, View, Switch } from 'react-native';
+import { StyleSheet, Text, TextInput, View } from 'react-native';
 import { Picker } from '@react-native-picker/picker';
 
 export default function Aula1() {  
@@ -11,10 +10,6 @@ export default function Aula1() {
   const [password, setPassword] = useState("")
   const [isEnabled, setIsEnabled] = useState(true)
   const [selectedValue, setSelectedValue] = useState("")
-
-  const [form, setForm] = useState({
-
-  })
   
   function submit() {
     if (typeof numero !== 'number') {

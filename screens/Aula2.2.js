@@ -1,8 +1,5 @@
-import { StatusBar } from 'expo-status-bar';
 import { useEffect, useState } from 'react';
-import { Button, StyleSheet, Text, TextInput, View, Switch } from 'react-native';
-import { Picker } from '@react-native-picker/picker';
-import Task from './components/Task/Task';
+import { Button, StyleSheet, TextInput, View, Switch } from 'react-native';
 
 export default function Aula2() {
 
