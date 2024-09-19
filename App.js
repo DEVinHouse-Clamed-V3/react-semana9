@@ -1,7 +1,8 @@
 import { NavigationContainer } from '@react-navigation/native';
 import { createMaterialTopTabNavigator } from '@react-navigation/material-top-tabs';
-import { View, Text } from 'react-native';
+import { View, Text, SafeAreaView, StyleSheet } from 'react-native';
 import TasksScreen from './screens/TasksScreen'
+
 
 function HomeScreen() {
   return (
@@ -23,13 +24,23 @@ const Tab = createMaterialTopTabNavigator()
 
 export default function App() {
   return (
-    <NavigationContainer>
-      {/* Definicao das tabs */}
-      <Tab.Navigator initialRouteName='Tasks'>
-        <Tab.Screen name='Message' component={HomeScreen} />
-        <Tab.Screen name='Tasks' component={TasksScreen} />
-        <Tab.Screen name='Last Activity' component={SettingsScreen} />
-      </Tab.Navigator>
-    </NavigationContainer>
+    <SafeAreaView style={styles.safeArea}>
+      <NavigationContainer>
+            {/* Definicao das tabs */}
+            <Tab.Navigator 
+                initialRouteName='Tasks' 
+                screenOptions={{ tabBarIndicatorStyle: { backgroundColor: "blue" } }}>
+              <Tab.Screen name='Message' component={HomeScreen} />
+              <Tab.Screen name='Tasks' component={TasksScreen} />
+              <Tab.Screen name='Last Activity' component={SettingsScreen} />
+            </Tab.Navigator>
+          </NavigationContainer>
+    </SafeAreaView>    
   )
 }
+
+const styles = StyleSheet.create({
+  safeArea: {
+    flex: 1
+  }
+})
