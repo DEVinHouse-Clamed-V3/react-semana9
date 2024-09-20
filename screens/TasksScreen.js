@@ -39,7 +39,7 @@ export default function TasksScreen() {
   // Irá verificar se possui dados salvos localmente relacionados as Tasks.
   // Caso haja tasks salvas, ele irá ser carregado no array 'original'
   // Caso contrário, original continuará sendo um array vazio.
-  useState(() => {
+  useEffect(() => {
     async function getStorageData() {
       const _tasks = await getData('tasks')
       if (_tasks) {
