@@ -41,7 +41,7 @@ export default function TasksScreen() {
   // Caso contrário, original continuará sendo um array vazio.
   useState(() => {
     async function getStorageData() {
-      const _tasks = getData('tasks')
+      const _tasks = await getData('tasks')
       if (_tasks) {
         setOriginal(_tasks)
       }
