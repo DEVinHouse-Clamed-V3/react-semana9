@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import { StyleSheet, TextInput, View, Text, Button, Modal } from 'react-native';
 import Task from '../components/Task/Task';
-import { getData } from '../services/storage';
+import { getData, storeData } from '../services/storage';
 
 export default function TasksScreen() {
 
@@ -77,7 +77,7 @@ export default function TasksScreen() {
       data: "19 set 2024"
     }
 
-    setOriginal(prev => [...prev, newTask])
+    setOriginal(prev => [...prev, newTask])    
     setModalVisible(false)
   }
 

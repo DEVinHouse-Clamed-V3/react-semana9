@@ -1,9 +1,8 @@
 import { NavigationContainer } from '@react-navigation/native';
 // import { createMaterialTopTabNavigator } from '@react-navigation/material-top-tabs';
-import { SafeAreaView, StyleSheet, StatusBar } from 'react-native';
+import { View, Text, SafeAreaView, StyleSheet, StatusBar } from 'react-native';
 import TasksScreen from './screens/TasksScreen'
 import MessagesScreen from './screens/MessagesScreen'
-import TestesScreen from './screens/TestesScreen'
 import LastActivityScreen from './screens/LastActivityScreen'
 import { createDrawerNavigator } from '@react-navigation/drawer';
 import './gesture-handler.native';
@@ -20,12 +19,10 @@ export default function App() {
           translucent={true}
           barStyle="dark-content" // Define o estilo do conteúdo da StatusBar (claro ou escuro)
         />
-
         {/* Definicao das drawers */}
         <Drawer.Navigator initialRouteName="Home">
           <Drawer.Screen name="Tasks" component={TasksScreen} />
           <Drawer.Screen name="Messages" component={MessagesScreen} />
-          <Drawer.Screen name="Testes" component={TestesScreen} />
         </Drawer.Navigator>
 
         {/* Definicao das tabs */}

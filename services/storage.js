@@ -1,7 +1,21 @@
 import AsyncStorage from '@react-native-async-storage/async-storage';
 
+
+/**
+ * console.log('1 - 19:55:56')
+ * console.log('2 - 19:55:57')
+ * const response = await fetch('api')
+ * console.log('3 - 19:55:59')
+ * 
+ */
+
+
 // Salvando um valor
 // Uso: storeData('themePreference', 'dark')
+
+// async function storeData2() {
+// }
+
 export const storeData = async (key, value) => {
     try {
         const jsonValue = JSON.stringify(value);
