@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 import { StyleSheet, TextInput, View, Text, Button, Modal } from 'react-native';
 import Task from '../components/Task/Task';
+import { getData } from '../services/storage';
 
 export default function TasksScreen() {
 
@@ -34,13 +35,31 @@ export default function TasksScreen() {
 
   const [search, setSearch] = useState("")
 
+  // Codigo que será executado no carregamento do componente.
+  // Irá verificar se possui dados salvos localmente relacionados as Tasks.
+  // Caso haja tasks salvas, ele irá ser carregado no array 'original'
+  // Caso contrário, original continuará sendo um array vazio.
+  useState(() => {
+    async function getStorageData() {
+      const _tasks = getData('tasks')
+      if (_tasks) {
+        setOriginal(_tasks)
+      }
+    }
+
+    getStorageData()
+  }, [])
+
+  // useEffect responsavel por atualizar o array 'tasks'
+  // Este é o array que é renderizado na tela
+  // Código será executado toda vez que variável search ou original for alterada.
   useEffect(() => {
     /**
      * "Estudar".includes("") => true
      * "Pagar boleto".includes("") => true
      * "Estudar 2".includes("") => true
      */
-    console.log('usuario digitando no input de busca')
+    console.log('usuario digitando no input de busca ou array Original foi alterado')
     const filtrado = original.filter(item =>
       item.nome.toLocaleLowerCase()
         .includes(search.toLocaleLowerCase()))
@@ -58,7 +77,6 @@ export default function TasksScreen() {
       data: "19 set 2024"
     }
 
-    // setOriginal(valorAtual => [...valorAtual, newTask])
     setOriginal(prev => [...prev, newTask])
     setModalVisible(false)
   }
@@ -67,7 +85,7 @@ export default function TasksScreen() {
     <View style={styles.container}>
       <TextInput style={styles.searchInput} placeholder='Buscar tarefa' onChangeText={setSearch} value={search} />
       <Button title='Criar Tarefa' onPress={() => setModalVisible(true)} />
-      
+
       {tasks.length === 0 ? 
         <Text>Nao existem tarefas cadastradas</Text> : <></>}      
 

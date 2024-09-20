@@ -16,14 +16,15 @@ export default function App() {
           translucent={true}
           barStyle="dark-content" // Define o estilo do conteúdo da StatusBar (claro ou escuro)
         />
-
         {/* Definicao das tabs */}
         <Tab.Navigator
           initialRouteName='Tasks'
           screenOptions={{ tabBarIndicatorStyle: { backgroundColor: "blue" } }}>
+        
           <Tab.Screen name='Messages' component={MessagesScreen} />
           <Tab.Screen name='Tasks' component={TasksScreen} />
           <Tab.Screen name='Last Activity' component={LastActivityScreen} />
+          
         </Tab.Navigator>
       </NavigationContainer>
     </SafeAreaView>
@@ -32,6 +33,6 @@ export default function App() {
 
 const styles = StyleSheet.create({
   safeArea: {
-    flex: 1
+    flex: 1,
   }
 })
