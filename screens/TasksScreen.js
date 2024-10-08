@@ -6,31 +6,32 @@ import { getData, storeData } from '../services/storage';
 export default function TasksScreen() {
 
   const [inputValue, setInputValue] = useState("")
+  
   const [modalVisible, setModalVisible] = useState(false)
 
   const [tasks, setTasks] = useState([])
   const [original, setOriginal] = useState([
-    // {
-    //   id: 1,
-    //   nome: "Estudar",
-    //   descricao: "Estudar para DevInHouse",
-    //   status: "false",
-    //   data: "18 set 2024"
-    // },
-    // {
-    //   id: 2,
-    //   nome: "Pagar boleto",
-    //   descricao: "Pagar boleto do condominio de minas",
-    //   status: "false",
-    //   data: "17 set 2024"
-    // },
-    // {
-    //   id: 3,
-    //   nome: "Estudar 2",
-    //   descricao: "Estudar para Faculdade",
-    //   status: "false",
-    //   data: "18 set 2024"
-    // },
+    {
+      id: 1,
+      nome: "Estudar",
+      descricao: "Estudar para DevInHouse",
+      status: "false",
+      data: "18 set 2024"
+    },
+    {
+      id: 2,
+      nome: "Pagar boleto",
+      descricao: "Pagar boleto do condominio de minas",
+      status: "false",
+      data: "17 set 2024"
+    },
+    {
+      id: 3,
+      nome: "Estudar 2",
+      descricao: "Estudar para Faculdade",
+      status: "false",
+      data: "18 set 2024"
+    },
   ])
 
   const [search, setSearch] = useState("")
@@ -89,6 +90,7 @@ export default function TasksScreen() {
       {tasks.length === 0 ? 
         <Text>Nao existem tarefas cadastradas</Text> : <></>}      
 
+    
       <View style={styles.list}>
         {tasks.map(task => {
           return <Task key={task.id}

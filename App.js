@@ -6,30 +6,41 @@ import MessagesScreen from './screens/MessagesScreen'
 import TestesScreen from './screens/TestesScreen'
 import LastActivityScreen from './screens/LastActivityScreen'
 import { createDrawerNavigator } from '@react-navigation/drawer';
-import './gesture-handler.native';
+import { ThemeProvider } from './context/ThemeContext';
 
+import './gesture-handler.native';
 // const Tab = createMaterialTopTabNavigator()
 const Drawer = createDrawerNavigator();
 
+
 export default function App() {
+
   return (
-    <SafeAreaView style={styles.safeArea} edges={['top', 'left', 'right']}>
-      <NavigationContainer>
-        <StatusBar
-          backgroundColor="transparent"
-          translucent={true}
-          barStyle="dark-content" // Define o estilo do conteúdo da StatusBar (claro ou escuro)
-        />
+    <ThemeProvider>
+      <SafeAreaView style={styles.safeArea} edges={['top', 'left', 'right']}>
+        <NavigationContainer>
+          <StatusBar
+            backgroundColor="transparent"
+            translucent={true}
+            barStyle="dark-content" // Define o estilo do conteúdo da StatusBar (claro ou escuro)
+          />
 
-        {/* Definicao das drawers */}
-        <Drawer.Navigator initialRouteName="Home">
-          <Drawer.Screen name="Tasks" component={TasksScreen} />
-          <Drawer.Screen name="Messages" component={MessagesScreen} />
-          <Drawer.Screen name="Testes" component={TestesScreen} />
-        </Drawer.Navigator>
 
-        {/* Definicao das tabs */}
-        {/* <Tab.Navigator
+          <Drawer.Navigator initialRouteName="Testes">
+            <Drawer.Screen name="Tasks" component={TasksScreen} />
+            <Drawer.Screen name="Messages" component={MessagesScreen} />
+            <Drawer.Screen name="Testes" component={TestesScreen} />
+          </Drawer.Navigator>
+
+
+          {/* Login component={LoginScreen} */}
+          {/* Cadastro component={CadastroScreen} */}
+
+          {/* Definicao das drawers */}
+
+
+          {/* Definicao das tabs */}
+          {/* <Tab.Navigator
           initialRouteName='Tasks'
           screenOptions={{ tabBarIndicatorStyle: { backgroundColor: "blue" } }}>
         
@@ -38,8 +49,9 @@ export default function App() {
           <Tab.Screen name='Last Activity' component={LastActivityScreen} />
           
         </Tab.Navigator> */}
-      </NavigationContainer>
-    </SafeAreaView>
+        </NavigationContainer>
+      </SafeAreaView>
+    </ThemeProvider>
   )
 }
 

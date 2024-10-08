@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { View, Text, Button, Switch } from "react-native";
-import { getData, storeData } from "../services/storage";
+import { clearData, getData, storeData } from "../services/storage";
 
 export default function MessagesScreen() {
 
@@ -20,10 +20,15 @@ export default function MessagesScreen() {
         setIsDark(!isDark)
         storeData('theme', isDark ? 'dark' : 'light')
     }
+
+    async function limparDados() {
+        await clearData()
+    }
     return (
         <View>
             <Text>Não existem mensagens recentes.</Text>
             <Switch value={isDark} onValueChange={mudancaTema}/>
+            <Button title="Limpar Dados" onPress={limparDados}/>
         </View>
     )
 }

@@ -11,11 +11,8 @@ import AsyncStorage from '@react-native-async-storage/async-storage';
 
 
 // Salvando um valor
-// Uso: storeData('themePreference', 'dark')
-
-// async function storeData2() {
-// }
-
+// Uso: await storeData('themePreference', 'dark')
+// Uso: await storeData('email', 'yan.m.esteves@gmail.com')
 export const storeData = async (key, value) => {
     try {
         const jsonValue = JSON.stringify(value);
@@ -26,7 +23,8 @@ export const storeData = async (key, value) => {
 };
 
 // Lendo um valor
-// Uso: const themePreference = getData('themePreference')
+// Uso: const themePreference = await getData('themePreference')
+// Uso: const email = await getData('email')
 export const getData = async (key) => {
     try {
         const jsonValue = await AsyncStorage.getItem(key);
