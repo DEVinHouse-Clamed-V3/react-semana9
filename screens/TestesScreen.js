@@ -1,10 +1,12 @@
 import { useEffect, useState } from 'react';
 import { StyleSheet, TextInput, View, Text, Button, Modal } from 'react-native';
 import { useTheme } from '../context/ThemeContext';
+import { useAuth } from '../context/AuthContext';
 
 
 export default function TestesScreen() {
 
+  const { user } = useAuth()
   const { theme, toggleTheme } = useTheme();
 
   const [count, setCount] = useState(0)
@@ -54,6 +56,7 @@ export default function TestesScreen() {
 
   return (
 <View style={styles.container}>
+      <Text>Usuario: {JSON.stringify(user)}</Text>
       <Text>Tema aplicado: {theme}</Text>
       <Button title='Alterar Tema' onPress={toggleTheme}/>
       <TextInput placeholder='Buscar Carro' value={search} onChangeText={setSearch} />

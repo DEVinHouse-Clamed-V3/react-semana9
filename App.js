@@ -9,6 +9,7 @@ import { createDrawerNavigator } from '@react-navigation/drawer';
 import { ThemeProvider } from './context/ThemeContext';
 
 import './gesture-handler.native';
+import { AuthProvider } from './context/AuthContext';
 // const Tab = createMaterialTopTabNavigator()
 const Drawer = createDrawerNavigator();
 
@@ -16,31 +17,32 @@ const Drawer = createDrawerNavigator();
 export default function App() {
 
   return (
-    <ThemeProvider>
-      <SafeAreaView style={styles.safeArea} edges={['top', 'left', 'right']}>
-        <NavigationContainer>
-          <StatusBar
-            backgroundColor="transparent"
-            translucent={true}
-            barStyle="dark-content" // Define o estilo do conteúdo da StatusBar (claro ou escuro)
-          />
+    <AuthProvider>
+      <ThemeProvider>
+        <SafeAreaView style={styles.safeArea} edges={['top', 'left', 'right']}>
+          <NavigationContainer>
+            <StatusBar
+              backgroundColor="transparent"
+              translucent={true}
+              barStyle="dark-content" // Define o estilo do conteúdo da StatusBar (claro ou escuro)
+            />
 
 
-          <Drawer.Navigator initialRouteName="Testes">
-            <Drawer.Screen name="Tasks" component={TasksScreen} />
-            <Drawer.Screen name="Messages" component={MessagesScreen} />
-            <Drawer.Screen name="Testes" component={TestesScreen} />
-          </Drawer.Navigator>
+            <Drawer.Navigator initialRouteName="Testes">
+              <Drawer.Screen name="Tasks" component={TasksScreen} />
+              <Drawer.Screen name="Messages" component={MessagesScreen} />
+              <Drawer.Screen name="Testes" component={TestesScreen} />
+            </Drawer.Navigator>
 
 
-          {/* Login component={LoginScreen} */}
-          {/* Cadastro component={CadastroScreen} */}
+            {/* Login component={LoginScreen} */}
+            {/* Cadastro component={CadastroScreen} */}
 
-          {/* Definicao das drawers */}
+            {/* Definicao das drawers */}
 
 
-          {/* Definicao das tabs */}
-          {/* <Tab.Navigator
+            {/* Definicao das tabs */}
+            {/* <Tab.Navigator
           initialRouteName='Tasks'
           screenOptions={{ tabBarIndicatorStyle: { backgroundColor: "blue" } }}>
         
@@ -49,9 +51,11 @@ export default function App() {
           <Tab.Screen name='Last Activity' component={LastActivityScreen} />
           
         </Tab.Navigator> */}
-        </NavigationContainer>
-      </SafeAreaView>
-    </ThemeProvider>
+          </NavigationContainer>
+        </SafeAreaView>
+      </ThemeProvider>
+    </AuthProvider>
+
   )
 }
 
