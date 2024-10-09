@@ -10,6 +10,7 @@ import { ThemeProvider } from './context/ThemeContext';
 
 import './gesture-handler.native';
 import { AuthProvider } from './context/AuthContext';
+import { LoginScreen } from './screens/LoginScreen';
 // const Tab = createMaterialTopTabNavigator()
 const Drawer = createDrawerNavigator();
 
@@ -28,10 +29,11 @@ export default function App() {
             />
 
 
-            <Drawer.Navigator initialRouteName="Testes">
+            <Drawer.Navigator initialRouteName="Login">
               <Drawer.Screen name="Tasks" component={TasksScreen} />
               <Drawer.Screen name="Messages" component={MessagesScreen} />
               <Drawer.Screen name="Testes" component={TestesScreen} />
+              <Drawer.Screen name="Login" component={LoginScreen} />
             </Drawer.Navigator>
 
 

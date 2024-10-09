@@ -19,13 +19,12 @@ export const AuthProvider = ({ children }) => {
 
     const [user, setUser] = useState(null)
 
-    const login = (username, password) => {
-        // chamada de api 
+    function login(username, password) {
         const fakeUser = { username: username, nome: 'Yan', foto: 'https://'}
         setUser(fakeUser)
     }
 
-    const logout = () => {
+    function logout() {
         setUser(null)
     }
 
